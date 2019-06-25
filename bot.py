@@ -2,7 +2,7 @@ import json
 from discord.ext import commands
 import discord
 import mysql.connector
-
+from discord.utils import get
 
 connection = mysql.connector.connect(
   host="localhost",
@@ -34,22 +34,29 @@ def convert_json_to_mariadb():
         connection.commit()
 
 
-@client.event
-async def on_command_error(ctx, error):
-    if ctx.message.channel.name == 'buckettest':
-        await ctx.send('Please use the correct format: [command] [message ID] [emoji] ["existing role"] '
-                       'example: .manage_role 50542471247133859 :wink: "League Of Legends"')
+#@client.event
+# async def on_command_error(ctx, error):
+#     if ctx.message.channel.name == 'buckettest':
+#         await ctx.send('Please use the correct format: [command] [message ID] [emoji] ["existing role"] '
+#                        'example: .manage_role 50542471247133859 :wink: "League Of Legends"')
 
 
 @client.command()
-async def manage_role(ctx, message_id: discord.Message.id, emoji, role: discord.Role):
+async def manage_role(ctx, message_id, emoji, role: discord.Role):
     if ctx.author.top_role.name == "Admin":
-        if isinstance(emoji, discord.Emoji):
-            emoji = emoji.id
-        emojiList.append([message_id, emoji, role.id])
-        with open('db/Emoji.json', 'w') as fp:
-            json.dump(emojiList, fp)
-        await ctx.send(f"Added {emoji} as the reaction to be assigned {role} as a role")
+        sql = "INSERT INTO emoji (message_id, emoji_id, role_id) VALUES (%s, %s, %s)"
+        val = (message_id, emoji, role.id)
+        try:
+            mycursor.execute(sql, val)
+            connection.commit()
+            await ctx.send(f"Added {emoji} as the reaction to be assigned {role.name} as a role")
+        except mysql.connector.errors.IntegrityError:
+            sql = "SELECT role_id, guild_id FROM emoji WHERE message_id = %s and emoji_id = %s"
+            val = (message_id, emoji)
+            mycursor.execute(sql, val)
+            old_role = ctx.guild.get_role(mycursor.fetchone()[0])
+            await ctx.send(f"It would seem {emoji} is currently assigned to [{old_role.name}] already, "
+                           f"use .remove_role to unassign this first.")
 
 
 @client.event
@@ -59,12 +66,12 @@ async def on_raw_reaction_add(raw):
         role_id = await get_role_from_db(raw)
         await remove_or_add_roles("add", role_id, raw)
         # TODO Below can be deleted after initial roles are added
-        # if channel.name == 'roles':
-        # if raw.emoji.is_custom_emoji():
-        #     emoji_code = '<:' + raw.emoji.name + ':' + str(raw.emoji.id) + '>'
-        #     await check_db_for_emoji(emoji_code)
-        # else:
-        #     await check_db_for_emoji(raw.emoji.name)
+    if channel.name == 'roles':
+        if raw.emoji.is_custom_emoji():
+            emoji_code = '<:' + raw.emoji.name + ':' + str(raw.emoji.id) + '>'
+        else:
+            emoji_code = raw.emoji.name
+        print(emoji_code)
 
 
 @client.event
