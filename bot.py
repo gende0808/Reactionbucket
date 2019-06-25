@@ -7,7 +7,7 @@ from discord.utils import get
 connection = mysql.connector.connect(
   host="localhost",
   user="root",
-  passwd="",
+  passwd="password",
   database="bucketbot",
   use_unicode=True,
   charset='utf8mb4'
@@ -34,11 +34,11 @@ def convert_json_to_mariadb():
         connection.commit()
 
 
-#@client.event
-# async def on_command_error(ctx, error):
-#     if ctx.message.channel.name == 'buckettest':
-#         await ctx.send('Please use the correct format: [command] [message ID] [emoji] ["existing role"] '
-#                        'example: .manage_role 50542471247133859 :wink: "League Of Legends"')
+@client.event
+async def on_command_error(ctx, error):
+    if ctx.message.channel.name == 'buckettest':
+        await ctx.send('Please use the correct format: [command] [message ID] [emoji] ["existing role"] '
+                       'example: .manage_role 50542471247133859 :wink: "League Of Legends":518587805711204362:')
 
 
 @client.command()
