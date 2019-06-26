@@ -7,7 +7,7 @@ from discord.utils import get
 connection = mysql.connector.connect(
   host="localhost",
   user="root",
-  passwd="password",
+  passwd="",
   database="bucketbot",
   use_unicode=True,
   charset='utf8mb4'
@@ -18,45 +18,47 @@ token = "NTY0NDg5MDk5NTEyMzgxNDQw.XKondw.feVRAvJHQvImttAd8X7EBxSkfNw"
 # Creates client and sets command prefixes to ! meaning that any function name can be called with ! before it.
 client: commands.Bot = commands.Bot(command_prefix='.')
 
-# Opens the JSON file and loads it as a JSON object
-roles_channel = 'buckettest'
-emojifile = open('db/Emoji.json')
-emojiList = json.load(emojifile)
-emojifile.close()
+# assign_channel = 'reactionbucket'
+roles_channel = 'roles'
 mycursor = connection.cursor()
-
-
-def convert_json_to_mariadb():
-    for records in emojiList:
-        sql = "INSERT INTO emoji (message_id, emoji_id, role_id) VALUES (%s, %s, %s)"
-        val = (records[0], records[1], records[2])
-        mycursor.execute(sql, val)
-        connection.commit()
 
 
 @client.event
 async def on_command_error(ctx, error):
-    if ctx.message.channel.name == 'buckettest':
+    if ctx.message.channel.name == roles_channel:
         await ctx.send('Please use the correct format: [command] [message ID] [emoji] ["existing role"] '
-                       'example: .manage_role 50542471247133859 :wink: "League Of Legends":518587805711204362:')
+                       'example: \n\n\n.manage_role 50542471247133859 :wink: "League Of Legends"')
 
 
 @client.command()
-async def manage_role(ctx, message_id, emoji, role: discord.Role):
+async def add_reaction_role(ctx, message_id, emoji, role: discord.Role):
     if ctx.author.top_role.name == "Admin":
         sql = "INSERT INTO emoji (message_id, emoji_id, role_id) VALUES (%s, %s, %s)"
         val = (message_id, emoji, role.id)
         try:
             mycursor.execute(sql, val)
             connection.commit()
-            await ctx.send(f"Added {emoji} as the reaction to be assigned {role.name} as a role")
+            await ctx.send(f"Added {emoji} as the reaction to assign [{role.name}] as a role")
         except mysql.connector.errors.IntegrityError:
-            sql = "SELECT role_id, guild_id FROM emoji WHERE message_id = %s and emoji_id = %s"
+            sql = "SELECT role_id FROM emoji WHERE message_id = %s and emoji_id = %s"
             val = (message_id, emoji)
             mycursor.execute(sql, val)
             old_role = ctx.guild.get_role(mycursor.fetchone()[0])
-            await ctx.send(f"It would seem {emoji} is currently assigned to [{old_role.name}] already, "
-                           f"use .remove_role to unassign this first.")
+            await ctx.send(f"```It would seem {emoji} is currently assigned to [{old_role.name}] already, "
+                           f"use .remove_reaction_role to unassign this first.```")
+
+
+@client.command()
+async def remove_reaction_role(ctx, role: discord.Role):
+    if ctx.author.top_role.name == 'Admin':
+        sql = "DELETE FROM emoji WHERE role_id = %s"
+        try:
+            val = (role.id,)
+            mycursor.execute(sql, val)
+            connection.commit()
+            await ctx.send(f'```[{role.name}] will no longer be assigned by emojis```')
+        except discord.ext.commands.errors.BadArgument:
+            await ctx.send('```That role does not exist. Remember that roles are case-sensitive!```')
 
 
 @client.event
