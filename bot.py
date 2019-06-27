@@ -5,12 +5,12 @@ import mysql.connector
 from discord.utils import get
 
 connection = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  passwd="",
-  database="bucketbot",
-  use_unicode=True,
-  charset='utf8mb4'
+    host="localhost",
+    user="root",
+    passwd="password123",
+    database="bucketbot",
+    use_unicode=True,
+    charset='utf8mb4'
 )
 
 # bot token
@@ -67,13 +67,6 @@ async def on_raw_reaction_add(raw):
     if channel.name == roles_channel:
         role_id = await get_role_from_db(raw)
         await remove_or_add_roles("add", role_id, raw)
-        # TODO Below can be deleted after initial roles are added
-    if channel.name == 'roles':
-        if raw.emoji.is_custom_emoji():
-            emoji_code = '<:' + raw.emoji.name + ':' + str(raw.emoji.id) + '>'
-        else:
-            emoji_code = raw.emoji.name
-        print(emoji_code)
 
 
 @client.event
@@ -108,5 +101,6 @@ async def remove_or_add_roles(remove_or_add, role_id, raw: discord.RawReactionAc
             await member.add_roles(role)
         if remove_or_add == "remove":
             await member.remove_roles(role)
+
 
 client.run(token)
