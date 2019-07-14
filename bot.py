@@ -20,6 +20,11 @@ mycursor = connection.cursor()
 
 
 @client.event
+async def on_ready():
+    await client.change_presence(activity=discord.Game(name='Reaction Role Handler'))
+
+
+@client.event
 async def on_command_error(ctx, error):
     if ctx.channel.name == roles_channel:
         if isinstance(error, commands.CommandNotFound):
@@ -164,7 +169,3 @@ async def remove_or_add_roles(remove_or_add, role_id, raw: discord.RawReactionAc
 
 
 client.run(token)
-# async def set_role():
-#     game = discord.Game("Custom Role Bot")
-#     await client.change_presence(status=discord.Status.idle, activity=game)
-
