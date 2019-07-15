@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37fee528-0751-488e-92ad-87ffd54dd022" name="Default Changelist" comment="">
+    <list default="true" id="37fee528-0751-488e-92ad-87ffd54dd022" name="Default Changelist" comment="V6 with more commands and more everything!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/bucketbot.sql" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +39,20 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="bucketbot: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - bucketbot@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="bucketbot: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="emoji: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - bucketbot@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="bucketbot: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="guild: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -46,10 +61,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="839">
-              <caret line="57" column="93" selection-start-line="57" selection-start-column="93" selection-end-line="57" selection-end-column="93" />
+            <state relative-caret-position="272">
+              <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#32#0" expanded="true" />
+                <element signature="e#641#1415#0" />
+                <element signature="e#1463#1762#0" />
+                <element signature="e#1805#1886#0" />
+                <element signature="e#2061#5440#0" />
+                <element signature="e#5268#6151#0" />
+                <element signature="e#6245#6586#0" />
+                <element signature="e#6643#6764#0" />
+                <element signature="e#6824#6948#0" />
+                <element signature="e#7020#7450#0" />
+                <element signature="e#7572#8135#0" />
+                <element signature="e#8225#8469#0" />
+                <element signature="e#8568#9360#0" />
               </folding>
             </state>
           </provider>
@@ -71,6 +98,18 @@
       <find>]</find>
       <find>474503795557007372</find>
       <find>guild</find>
+      <find>try</find>
+      <find>print</find>
+      <find>bucketbot</find>
+      <find>reaction</find>
+      <find>^</find>
+      <find>guild.guild_i</find>
+      <find>guild_id</find>
+      <find>channel</find>
+      <find>ctx.gui</find>
+      <find>it would seem</find>
+      <find>```</find>
+      <find>spam</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -87,15 +126,17 @@
       <list>
         <option value="$PROJECT_DIR$/venv/package.json" />
         <option value="$PROJECT_DIR$/db/Emoji.json" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/db/bucketbot.py" />
         <option value="$PROJECT_DIR$/bot.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="240" />
-    <option name="y" value="130" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-192" />
+    <option name="y" value="-8" />
     <option name="width" value="1440" />
-    <option name="height" value="780" />
+    <option name="height" value="766" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -103,6 +144,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -123,14 +165,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.console.LAST_STATE" value="true" />
+    <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/db" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -141,6 +182,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Gregory\PycharmProjects\SandbucketBot\db" />
       <recent name="C:\Users\Gregory\PycharmProjects\SandbucketBot" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gregory\PycharmProjects\SandbucketBot\db" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -205,6 +249,21 @@
       <workItem from="1561302991358" duration="15676000" />
       <workItem from="1561354701700" duration="60000" />
       <workItem from="1561398867503" duration="5041000" />
+      <workItem from="1561441942757" duration="74000" />
+      <workItem from="1561468527706" duration="7676000" />
+      <workItem from="1561490872358" duration="10000" />
+      <workItem from="1561579602972" duration="6220000" />
+      <workItem from="1561595967044" duration="13000" />
+      <workItem from="1561671970981" duration="1170000" />
+      <workItem from="1561743405972" duration="718000" />
+      <workItem from="1562001267516" duration="689000" />
+      <workItem from="1562012412804" duration="3513000" />
+      <workItem from="1562018058814" duration="1723000" />
+      <workItem from="1562876224308" duration="4454000" />
+      <workItem from="1562957251991" duration="9994000" />
+      <workItem from="1563026064190" duration="17015000" />
+      <workItem from="1563125543013" duration="9476000" />
+      <workItem from="1563222799658" duration="3880000" />
     </task>
     <task id="LOCAL-00001" summary="lots of progress">
       <created>1561324044062</created>
@@ -220,11 +279,46 @@
       <option name="project" value="LOCAL" />
       <updated>1561354745246</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="sql file and database integration">
+      <created>1561441995834</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1561441995834</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finished Bot (for now)">
+      <created>1561580073952</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561580073952</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Finished Bot (for now)">
+      <created>1561673173546</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1561673173546</updated>
+    </task>
+    <task id="LOCAL-00006" summary="V6 with more commands and more everything!">
+      <created>1563066961220</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1563066961220</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added 'now playing'">
+      <created>1563068489297</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1563068489297</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71865000" />
+    <option name="totallyTimeSpent" value="138490000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -236,21 +330,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2335" y="93" width="974" height="1047" extended-state="0" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.59080964" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10074627" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.2849099" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32998884" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.4147157" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39910814" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32998884" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32998884" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32998884" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32887402" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3277592" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32998884" />
@@ -259,8 +354,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.25373134" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32995737" />
+      <window_info anchor="right" id="Database" order="4" weight="0.18656716" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,10 +363,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lots of progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="lots of progress" />
+    <MESSAGE value="sql file and database integration" />
+    <MESSAGE value="Finished Bot (for now)" />
+    <MESSAGE value="V6 with more commands and more everything!" />
+    <MESSAGE value="Added 'now playing'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 'now playing'" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SandbucketBot$bot.coverage" NAME="bot Coverage Results" MODIFIED="1561403312083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SandbucketBot$bot.coverage" NAME="bot Coverage Results" MODIFIED="1563232553269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/package.json" />
@@ -293,6 +392,23 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d2967da2-aa5d-4f52-9c13-70239af85f7a/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/../colors/venv/Lib/site-packages/mysql/connector/cursor_cext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-591">
+          <caret line="516" column="8" selection-start-line="516" selection-start-column="8" selection-end-line="516" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reqquirements.txt" />
+    <entry file="file://$PROJECT_DIR$/requirements.txt" />
+    <entry file="file://$USER_HOME$/Downloads/nohup.out" />
+    <entry file="file://$PROJECT_DIR$/requirements2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://d2967da2-aa5d-4f52-9c13-70239af85f7a/schema/bucketbot/table/emoji">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -302,26 +418,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../colors/venv/Lib/site-packages/mysql/connector/cursor_cext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-591">
-          <caret line="516" column="8" selection-start-line="516" selection-start-column="8" selection-end-line="516" selection-end-column="8" />
+    <entry file="das://d2967da2-aa5d-4f52-9c13-70239af85f7a/schema/bucketbot/table/guild">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/Emoji.json">
+    <entry file="file://$PROJECT_DIR$/db/Emoji.json" />
+    <entry file="file://$PROJECT_DIR$/db/bucketbot.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <caret line="92" column="90" selection-start-line="92" selection-start-column="90" selection-end-line="92" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/bucketbot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3568">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="839">
-          <caret line="57" column="93" selection-start-line="57" selection-start-column="93" selection-end-line="57" selection-end-column="93" />
+        <state relative-caret-position="272">
+          <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#641#1415#0" />
+            <element signature="e#1463#1762#0" />
+            <element signature="e#1805#1886#0" />
+            <element signature="e#2061#5440#0" />
+            <element signature="e#5268#6151#0" />
+            <element signature="e#6245#6586#0" />
+            <element signature="e#6643#6764#0" />
+            <element signature="e#6824#6948#0" />
+            <element signature="e#7020#7450#0" />
+            <element signature="e#7572#8135#0" />
+            <element signature="e#8225#8469#0" />
+            <element signature="e#8568#9360#0" />
           </folding>
         </state>
       </provider>

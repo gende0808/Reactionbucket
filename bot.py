@@ -15,13 +15,56 @@ connection = mysql.connector.connect(
 token = 'NTk4OTc5MDI2Mzc5NDcyOTA4.XSehHw.c-RNf1ijHyr-TyApLvDLiy0vHpI'
 # Creates client and sets command prefixes to ! meaning that any function name can be called with ! before it.
 client: commands.Bot = commands.Bot(command_prefix='b.')
+client.remove_command('help')
 roles_channel = 'reactionbucket'
 mycursor = connection.cursor()
 
 
+@client.command()
+async def help(ctx):
+    await ctx.send(f'```diff'
+                   f'\nReactionBucket Options:'
+                   f'\n\n+   b.add_reaction_role [message ID] [emoji] ["existing role"]'
+                   f'\n\n-       Sets a role to assign with a reaction to this specific message.'
+                   f'\n\n+   b.remove_reaction_role [message ID] ["existing role"]'
+                   f'\n\n-       Will no longer recognize any emoji that assigns this role in this specific message.'
+                   f'\n\n+   b.set_log_channel ["channel name"]'
+                   f'\n\n-       Sets a channel to be the log for all role assignments/removals.'
+                   f'\n\n+   b. remove_log_channel'
+                   f'\n\n-       Stops the logging of role assignments.```'
+                   )
+
+
+@client.event
+async def on_message(msg):
+    if isinstance(msg.channel, discord.DMChannel) and msg.author.bot is False:
+        await msg.channel.send('Hey there. Unfortunately ReactionBucket doesn\'t work by privately messaging'
+                               '\n If you\'re interested in learning more about ReactionBucket visit my patreon:')
+
+
 @client.event
 async def on_ready():
-    await client.change_presence(activity=discord.Game(name='Reaction Role Handler'))
+    await client.change_presence(activity=discord.Game(name='Role Handler | b.help'))
+
+
+@client.event
+async def on_guild_join(guild: discord.Guild):
+    channel_exists = False
+    channel_id = 0
+    for channel in guild.text_channels:
+        if channel.name == roles_channel:
+            channel_exists = True
+            channel_id = channel.id
+    if channel_exists is not True:
+        await guild.create_text_channel(roles_channel)
+    else:
+        await guild.create_text_channel('hah')
+    if channel_id is 0:
+        for channel in guild.text_channels:
+            if channel.name == roles_channel:
+                channel_id = channel.id
+    channel: discord.TextChannel = client.get_channel(channel_id)
+    await channel.send("Hi there and thanks for using ReactionBucket!\nYou can get started by typing b.help")
 
 
 @client.event
