@@ -5,14 +5,14 @@ import mysql.connector
 connection = mysql.connector.connect(
     host="localhost",
     user="root",
-    passwd="",
+    passwd="password123",
     database="bucketbot",
     use_unicode=True,
     charset='utf8mb4',
-    port=3306
+    port=3307
 )
-# test token
-token = 'NTk4OTc5MDI2Mzc5NDcyOTA4.XSehHw.c-RNf1ijHyr-TyApLvDLiy0vHpI'
+# bot token
+token = "NTY0NDg5MDk5NTEyMzgxNDQw.XKondw.feVRAvJHQvImttAd8X7EBxSkfNw"
 # Creates client and sets command prefixes to ! meaning that any function name can be called with ! before it.
 client: commands.Bot = commands.Bot(command_prefix='b.')
 client.remove_command('help')
@@ -36,10 +36,8 @@ async def help(ctx):
                        f'\n\n-       Sets a channel to be the log for all role assignments/removals.'
                        f'\n\n+   ADMIN ONLY: b.remove_log_channel'
                        f'\n\n-       Stops the logging of role assignments.'
-                       f'\n\n+   NEW: b.add_confirm_button [message ID] [emoji] ["role to remove"] '
-                       f'["role to add(optional)]"'
-                       f'\n\n-       Sets a reaction to remove a role when clicked. Optionally also adds a role when '
-                       f'clicked.'
+                       f'\n\n+   NEW: b.add_confirm_button [message ID] [emoji] ["existing role"]'
+                       f'\n\n-       Sets a reaction to remove a role when clicked. '
                        f'Handy for newcomers to your server if you have a rules channel you want them to '
                        f'agree to having read.'
                        f'\n\n+   NEW (FREE!): b.add_timed_role [message ID] [emoji] ["existing role"] [lifespan in seconds]'
@@ -101,9 +99,8 @@ async def on_command_error(ctx: discord.ext.commands.Context, error):
                            'example: \n\nb.add_timed_role 50542471247133859 :wink: "League of Legends" 432000')
         elif ctx.command.qualified_name == 'add_confirm_button':
             await ctx.send('It seems like you may have forgotten one of the arguments!\n'
-                           'Please use the correct format: [command] [message ID] [emoji] ["existing role to remove"] '
-                           '["existing role to add(optional)"]'
-                           'example: \n\nb.add_confirm_button 50542471247133859 :wink: "Newcomer" "Verified"')
+                           'Please use the correct format: [command] [message ID] [emoji] ["existing role"]'
+                           'example: \n\nb.add_confirm_button 50542471247133859 :wink: "Newcomer"')
     elif isinstance(error, commands.BadArgument):
         if ctx.command.qualified_name == 'add_reaction_role':
             await ctx.send('It seems like you may have entered parameters in the wrong order '
@@ -134,9 +131,8 @@ async def on_command_error(ctx: discord.ext.commands.Context, error):
             await ctx.send('It seems like you may have entered parameters in the wrong '
                            'order or tried wrong parameters!'
                            '\nMake sure the channel exists and is typed properly with quotations! '
-                           'Please use the correct format: [command] [message ID] [emoji] ["existing role to remove"] '
-                           '["existing role to add(optional)]"'
-                           'example: \n\nb.add_confirm_button 50542471247133859 :wink: "Newcomer" "Verified"')
+                           'Please use the correct format: [command] [message ID] [emoji] ["existing role"] '
+                           'example: \n\nb.add_confirm_button 50542471247133859 :wink: "Newcomer"')
     else:
         await ctx.send('An unexpected general error has occurred. '
                        'Please try posting on reddit.com/r/reactionbucket or the official discord '
@@ -147,9 +143,7 @@ async def on_command_error(ctx: discord.ext.commands.Context, error):
 
 
 @client.command()
-async def add_confirm_button(ctx: discord.ext.commands.Context, message_id, emoji, role: discord.Role,
-                             optional_role: discord.Role = None):
-    optional_id = optional_role.id if optional_role is not None else 0
+async def add_confirm_button(ctx: discord.ext.commands.Context, message_id, emoji, role: discord.Role):
     if ctx.guild is None:
         await ctx.send('ReactionBucket does not take commands through DM\'s')
     elif ctx.author.guild_permissions.manage_roles is True:
@@ -160,10 +154,9 @@ async def add_confirm_button(ctx: discord.ext.commands.Context, message_id, emoj
                            'Please move me up in the hierarchy.')
         else:
             try:
-                sql = "INSERT INTO welcome (message_id, emoji_id, role_id, guild_id, optional_role_add) " \
-                      "VALUES (%s, %s, %s, %s, %s) " \
-                      "ON DUPLICATE KEY UPDATE message_id = %s, emoji_id = %s, role_id = %s, optional_role_add = %s"
-                val = (message_id, emoji, role.id, ctx.guild.id, optional_id, message_id, emoji, role.id, optional_id)
+                sql = "INSERT INTO welcome (message_id, emoji_id, role_id, guild_id) VALUES (%s, %s, %s, %s) " \
+                      "ON DUPLICATE KEY UPDATE message_id = %s, emoji_id = %s, role_id = %s"
+                val = (message_id, emoji, role.id, ctx.guild.id, message_id, emoji, role.id)
                 mycursor.execute(sql, val)
                 connection.commit()
                 await ctx.send(f"Added {emoji} as the button to confirm server rules")
@@ -252,7 +245,9 @@ async def on_raw_reaction_add(raw: discord.RawReactionActionEvent):
     else:
         welcome_role_id = await get_welcome_role_from_db(raw)
         if welcome_role_id is not False:
-            await remove_or_add_roles("remove", welcome_role_id, raw)
+            await remove_or_add_roles("remove", welcome_role_id[0], raw)
+            if welcome_role_id[1] is not 0:
+                await remove_or_add_roles("add", welcome_role_id[1], raw)
 
 
 @client.event
@@ -278,7 +273,7 @@ async def get_welcome_role_from_db(raw: discord.RawReactionActionEvent):
         emoji_code = '<:' + raw.emoji.name + ':' + str(raw.emoji.id) + '>'
     else:
         emoji_code = raw.emoji.name
-    sql = "SELECT role_id FROM welcome WHERE message_id = %s AND emoji_id = %s"
+    sql = "SELECT role_id, optional_role_add FROM welcome WHERE message_id = %s AND emoji_id = %s"
     search_for = (raw.message_id, emoji_code)
     mycursor.execute(sql, search_for)
     result = mycursor.fetchone()
