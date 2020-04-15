@@ -1,6 +1,7 @@
 from discord.ext import commands
 import discord
 import mysql.connector
+import dbl
 
 connection = mysql.connector.connect(
     host="localhost",
@@ -17,6 +18,18 @@ token = "NTY0NDg5MDk5NTEyMzgxNDQw.XKondw.feVRAvJHQvImttAd8X7EBxSkfNw"
 client: commands.Bot = commands.Bot(command_prefix='b.')
 client.remove_command('help')
 mycursor = connection.cursor(buffered=True)
+
+
+class TopGG(commands.Cog):
+    """Handles interactions with the top.gg API"""
+
+    def __init__(self, bot):
+        self.bot = bot
+        self.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2NDQ4OTA5OTUxMjM4MTQ0MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTc5OTY0OTQ5fQ.JmGhpnDA0Rch9tW5o5i-IRvBYUJG_JPIWu2Q7rooaYg' # set this to your DBL token
+        self.dblpy = dbl.DBLClient(self.bot, self.token, autopost=True) # Autopost will post your guild count every 30 minutes
+
+    async def on_guild_post(self):
+        print("Server count posted successfully")
 
 
 @client.command()
@@ -134,12 +147,13 @@ async def on_command_error(ctx: discord.ext.commands.Context, error):
                            'Please use the correct format: [command] [message ID] [emoji] ["existing role"] '
                            'example: \n\nb.add_confirm_button 50542471247133859 :wink: "Newcomer"')
     else:
-        await ctx.send('An unexpected general error has occurred. '
-                       'Please try posting on reddit.com/r/reactionbucket or the official discord '
-                       'to see if this can be solved. \n'
-                       ' Make sure you can repeat the process and '
-                       'describe exactly what caused the problem first though!\n'
-                       ' Include the error if there is one below this: \n\n' + str(error))
+        try:
+            await ctx.send('An unexpected general error has occurred. '
+                           'Usually this just means you might have made a typo, if you really '
+                           'can\'t seem to figure out how to solve it feel free to contact me at'
+                           'https://www.reddit.com/r/reactionbucket\n\n' + str(error))
+        except discord.Forbidden:
+            pass
 
 
 @client.command()
@@ -160,8 +174,10 @@ async def add_confirm_button(ctx: discord.ext.commands.Context, message_id, emoj
                 mycursor.execute(sql, val)
                 connection.commit()
                 await ctx.send(f"Added {emoji} as the button to confirm server rules")
-            except:
-                await ctx.send("Something went horribly wrong! Please contact my creator on reddit.com/r/reactionbucket")
+            except Exception as e:
+                print(e)
+                await ctx.send("Something went horribly wrong! "
+                               "Please contact my creator on reddit.com/r/reactionbucket")
 
 
 @client.command()
@@ -242,12 +258,9 @@ async def on_raw_reaction_add(raw: discord.RawReactionActionEvent):
     role_id = await get_role_from_db(raw)
     if role_id is not False:
         await remove_or_add_roles("add", role_id, raw)
-    else:
-        welcome_role_id = await get_welcome_role_from_db(raw)
-        if welcome_role_id is not False:
-            await remove_or_add_roles("remove", welcome_role_id[0], raw)
-            if welcome_role_id[1] is not 0:
-                await remove_or_add_roles("add", welcome_role_id[1], raw)
+    welcome_role_id = await get_welcome_role_from_db(raw)
+    if welcome_role_id is not False:
+        await remove_or_add_roles("remove", welcome_role_id, raw)
 
 
 @client.event
@@ -273,7 +286,7 @@ async def get_welcome_role_from_db(raw: discord.RawReactionActionEvent):
         emoji_code = '<:' + raw.emoji.name + ':' + str(raw.emoji.id) + '>'
     else:
         emoji_code = raw.emoji.name
-    sql = "SELECT role_id, optional_role_add FROM welcome WHERE message_id = %s AND emoji_id = %s"
+    sql = "SELECT role_id FROM welcome WHERE message_id = %s AND emoji_id = %s"
     search_for = (raw.message_id, emoji_code)
     mycursor.execute(sql, search_for)
     result = mycursor.fetchone()
@@ -285,7 +298,10 @@ async def get_welcome_role_from_db(raw: discord.RawReactionActionEvent):
 
 async def get_role_from_db(raw: discord.RawReactionActionEvent):
     if raw.emoji.is_custom_emoji():
-        emoji_code = '<:' + raw.emoji.name + ':' + str(raw.emoji.id) + '>'
+        if raw.emoji.name is not None and raw.emoji.id is not None:
+            emoji_code = str(raw.emoji)
+        else:
+            print(str(raw.emoji))
     else:
         emoji_code = raw.emoji.name
     sql = "SELECT role_id FROM emoji WHERE (message_id = %s AND emoji_id = %s " \
@@ -331,19 +347,25 @@ async def remove_or_add_roles(remove_or_add, role_id, raw: discord.RawReactionAc
     spam_channel = await get_spam_channel(raw)
     member: discord.Member = user_guild.get_member(raw.user_id)
     role: discord.Role = user_guild.get_role(role_id)
-    if user_guild.me.guild_permissions.manage_roles is True and member is not None:
-        if remove_or_add == "add":
-            await member.add_roles(role)
-            if spam_channel is not None:
-                await spam_channel.send(f'```Gave {member} the {role.name} role```')
-        if remove_or_add == "remove":
-            await member.remove_roles(role)
-            if spam_channel is not None:
-                await spam_channel.send(f'```Removed {role.name} from {member}\'s roles```')
-    else:
-        if spam_channel is not None:
-            await spam_channel.send(f'```Couldn\'t give or remove the role: {role.name} from {member} because I don\'t '
-                                    f'have the permission to change roles```')
+    if role is not None:
+        if user_guild.me.top_role < role:
+            if spam_channel is not None and user_guild.me.permissions_in(spam_channel).send_messages is True:
+                await spam_channel.send(f'```Unable to give/remove the | {role.name} | role. my role needs to be higher up '
+                                        f'the role list than the role you want me to add or remove.```')
+        else:
+            if user_guild.me.guild_permissions.manage_roles is True and member is not None and role is not None:
+                if remove_or_add == "add":
+                    await member.add_roles(role)
+                    if spam_channel is not None and user_guild.me.permissions_in(spam_channel).send_messages is True:
+                        await spam_channel.send(f'```Gave {member} the {role.name} role```')
+                if remove_or_add == "remove":
+                    await member.remove_roles(role)
+                    if spam_channel is not None and user_guild.me.permissions_in(spam_channel).send_messages is True:
+                        await spam_channel.send(f'```Removed {role.name} from {member}\'s roles```')
+            else:
+                if spam_channel is not None and user_guild.me.permissions_in(spam_channel).send_messages is True and role is not None:
+                    await spam_channel.send(f'```Couldn\'t give or remove the role: {role.name} from {member} '
+                                            f'because I don\'t have the permission to change roles```')
 
 
 async def get_spam_channel(raw: discord.RawReactionActionEvent):
@@ -356,4 +378,6 @@ async def get_spam_channel(raw: discord.RawReactionActionEvent):
     else:
         return None
 
+
+client.add_cog(TopGG(client))
 client.run(token)
