@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37fee528-0751-488e-92ad-87ffd54dd022" name="Default Changelist" comment="V6 with more commands and more everything!">
+    <list default="true" id="37fee528-0751-488e-92ad-87ffd54dd022" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/bucketbot.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/bucketbot.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/bucketbot.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,39 +45,32 @@
         <item name="MySQL - bucketbot@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="bucketbot: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="emoji: table" type="dbc44a63:MariaImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - bucketbot@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="bucketbot: schema" type="ebfa3cd1:MariaImplModel$Schema" />
-        <item name="guild: table" type="dbc44a63:MariaImplModel$Table" />
+        <item name="welcome: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+            <state relative-caret-position="1320">
+              <caret line="58" column="58" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="58" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
-                <element signature="e#641#1415#0" />
-                <element signature="e#1463#1762#0" />
-                <element signature="e#1805#1886#0" />
-                <element signature="e#2061#5440#0" />
-                <element signature="e#5268#6151#0" />
-                <element signature="e#6245#6586#0" />
-                <element signature="e#6643#6764#0" />
-                <element signature="e#6824#6948#0" />
-                <element signature="e#7020#7450#0" />
-                <element signature="e#7572#8135#0" />
-                <element signature="e#8225#8469#0" />
-                <element signature="e#8568#9360#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/db/bucketbot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="163" column="54" selection-start-line="163" selection-start-column="47" selection-end-line="163" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,27 +88,42 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>role</find>
-      <find>]</find>
-      <find>474503795557007372</find>
-      <find>guild</find>
-      <find>try</find>
-      <find>print</find>
-      <find>bucketbot</find>
-      <find>reaction</find>
-      <find>^</find>
-      <find>guild.guild_i</find>
-      <find>guild_id</find>
-      <find>channel</find>
-      <find>ctx.gui</find>
+      <find>horribly</find>
+      <find>welcome</find>
+      <find>await spam</find>
+      <find>Gave {me</find>
+      <find>spam_channel</find>
+      <find>remove_or_add</find>
+      <find>gregory</find>
+      <find>get_role_from</find>
+      <find>on_raw_reaction</find>
+      <find>if user_guild</find>
+      <find>remove_or_add_roles</find>
+      <find>await member.add_roles(role)</find>
+      <find>on_message</find>
+      <find>if user_guild.me.top</find>
+      <find>on_command</find>
+      <find>me</find>
+      <find>.me</find>
+      <find>send_msg_to_channel(</find>
+      <find>ctx.send</find>
+      <find>general error</find>
+      <find>it would see</find>
+      <find>is currently</find>
+      <find>Hi</find>
+      <find>print(</find>
+      <find>commit</find>
+      <find>.commit</find>
+      <find>emoji_code</find>
       <find>it would seem</find>
-      <find>```</find>
-      <find>spam</find>
+      <find>print</find>
+      <find>general</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>}</replace>
       <replace>&quot;474503795557007372&quot;</replace>
+      <replace>send_msg_to_channel(ctx,</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -126,17 +135,20 @@
       <list>
         <option value="$PROJECT_DIR$/venv/package.json" />
         <option value="$PROJECT_DIR$/db/Emoji.json" />
+        <option value="$PROJECT_DIR$/db/bucketbotreal.py" />
+        <option value="$USER_HOME$/Downloads/bucketbot.py" />
+        <option value="$USER_HOME$/Downloads/bucketbot (1).py" />
+        <option value="$PROJECT_DIR$/bot.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/db/bucketbot.py" />
-        <option value="$PROJECT_DIR$/bot.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-192" />
+    <option name="x" value="-27" />
     <option name="y" value="-8" />
-    <option name="width" value="1440" />
-    <option name="height" value="766" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -157,10 +169,6 @@
               <item name="SandbucketBot" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="SandbucketBot" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -176,15 +184,15 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gregory\PycharmProjects\SandbucketBot\db" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Gregory\PycharmProjects\SandbucketBot\db" />
       <recent name="C:\Users\Gregory\PycharmProjects\SandbucketBot" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Gregory\PycharmProjects\SandbucketBot\db" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -263,7 +271,59 @@
       <workItem from="1562957251991" duration="9994000" />
       <workItem from="1563026064190" duration="17015000" />
       <workItem from="1563125543013" duration="9476000" />
-      <workItem from="1563222799658" duration="3880000" />
+      <workItem from="1563222799658" duration="7792000" />
+      <workItem from="1563281420408" duration="99000" />
+      <workItem from="1563281943821" duration="315000" />
+      <workItem from="1563284730635" duration="66000" />
+      <workItem from="1563286934551" duration="200000" />
+      <workItem from="1563300293318" duration="957000" />
+      <workItem from="1563367080320" duration="3959000" />
+      <workItem from="1563391340768" duration="10000" />
+      <workItem from="1563577162875" duration="772000" />
+      <workItem from="1563630383061" duration="7811000" />
+      <workItem from="1563640010687" duration="1648000" />
+      <workItem from="1563723142410" duration="1199000" />
+      <workItem from="1564452523061" duration="24000" />
+      <workItem from="1564944568415" duration="1652000" />
+      <workItem from="1565107518618" duration="67000" />
+      <workItem from="1565989015426" duration="26000" />
+      <workItem from="1566280079929" duration="11863000" />
+      <workItem from="1566304362974" duration="616000" />
+      <workItem from="1566481533439" duration="5496000" />
+      <workItem from="1567849286899" duration="272000" />
+      <workItem from="1568483199915" duration="946000" />
+      <workItem from="1571251125947" duration="1167000" />
+      <workItem from="1573824506417" duration="11206000" />
+      <workItem from="1573915602675" duration="1166000" />
+      <workItem from="1574159438452" duration="85000" />
+      <workItem from="1574428177756" duration="2134000" />
+      <workItem from="1574798155918" duration="6080000" />
+      <workItem from="1575075911599" duration="3765000" />
+      <workItem from="1575741720538" duration="67000" />
+      <workItem from="1578232447357" duration="24000" />
+      <workItem from="1579964004081" duration="3888000" />
+      <workItem from="1581108102854" duration="4812000" />
+      <workItem from="1585180657131" duration="221000" />
+      <workItem from="1585581447618" duration="601000" />
+      <workItem from="1585653877623" duration="18000" />
+      <workItem from="1586348225365" duration="5346000" />
+      <workItem from="1586473249446" duration="3044000" />
+      <workItem from="1586525270821" duration="4880000" />
+      <workItem from="1586626707986" duration="4722000" />
+      <workItem from="1586798614384" duration="5083000" />
+      <workItem from="1586949717652" duration="1558000" />
+      <workItem from="1586964025966" duration="1383000" />
+      <workItem from="1586965429793" duration="12396000" />
+      <workItem from="1587004507679" duration="72000" />
+      <workItem from="1587998748180" duration="283000" />
+      <workItem from="1588247457457" duration="765000" />
+      <workItem from="1588790901464" duration="630000" />
+      <workItem from="1589543877112" duration="3368000" />
+      <workItem from="1590370117958" duration="751000" />
+      <workItem from="1590397996909" duration="5942000" />
+      <workItem from="1592393666310" duration="1668000" />
+      <workItem from="1595417377942" duration="375000" />
+      <workItem from="1597719664280" duration="33000" />
     </task>
     <task id="LOCAL-00001" summary="lots of progress">
       <created>1561324044062</created>
@@ -314,11 +374,46 @@
       <option name="project" value="LOCAL" />
       <updated>1563068489297</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="help added, also default reply on DM and setup added.">
+      <created>1563232857095</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1563232857095</updated>
+    </task>
+    <task id="LOCAL-00009" summary="refactored all the code to work with role permissions instead of a reactionrole channel.">
+      <created>1563635837352</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1563635837352</updated>
+    </task>
+    <task id="LOCAL-00010" summary="It's been a while. update of the project!">
+      <created>1574159461666</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574159461666</updated>
+    </task>
+    <task id="LOCAL-00011" summary="project update, NOT LIVE VERSION. has new feature">
+      <created>1575741770302</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575741770302</updated>
+    </task>
+    <task id="LOCAL-00012" summary="current live version. DO NOT REMOVE">
+      <created>1586972895211</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1586972895211</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138490000" />
+    <option name="totallyTimeSpent" value="267933000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -330,15 +425,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10074627" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12260128" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32998884" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.4147157" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.33890748" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39910814" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -349,7 +443,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32887402" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3277592" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32998884" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32998884" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" visible="true" weight="0.32998884" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.32998884" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -361,16 +455,24 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lots of progress" />
     <MESSAGE value="sql file and database integration" />
     <MESSAGE value="Finished Bot (for now)" />
     <MESSAGE value="V6 with more commands and more everything!" />
     <MESSAGE value="Added 'now playing'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added 'now playing'" />
+    <MESSAGE value="help added, also default reply on DM and setup added." />
+    <MESSAGE value="refactored all the code to work with role permissions instead of a reactionrole channel." />
+    <MESSAGE value="It's been a while. update of the project!" />
+    <MESSAGE value="project update, NOT LIVE VERSION. has new feature" />
+    <MESSAGE value="current live version. DO NOT REMOVE" />
+    <option name="LAST_COMMIT_MESSAGE" value="current live version. DO NOT REMOVE" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SandbucketBot$bot.coverage" NAME="bot Coverage Results" MODIFIED="1563232553269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SandbucketBot$bot.coverage" NAME="bot Coverage Results" MODIFIED="1592394382645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/package.json" />
@@ -379,13 +481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-91">
           <caret line="831" selection-start-line="831" selection-end-line="831" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../colors/venv/Lib/site-packages/discord/member.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="577" column="14" selection-start-line="577" selection-start-column="14" selection-end-line="577" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -400,15 +495,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reqquirements.txt" />
-    <entry file="file://$PROJECT_DIR$/requirements.txt" />
     <entry file="file://$USER_HOME$/Downloads/nohup.out" />
-    <entry file="file://$PROJECT_DIR$/requirements2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://d2967da2-aa5d-4f52-9c13-70239af85f7a/schema/bucketbot/table/emoji">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -428,6 +515,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/Emoji.json" />
+    <entry file="file://$PROJECT_DIR$/db/bucketbotreal.py" />
+    <entry file="file://$PROJECT_DIR$/../colors/venv/Lib/site-packages/discord/permissions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1278">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/bucketbot.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
@@ -435,31 +530,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/bucketbot.py">
+    <entry file="file://$PROJECT_DIR$/../colors/venv/Lib/site-packages/discord/member.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3568">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="286">
+          <caret line="577" column="14" selection-start-line="577" selection-start-column="14" selection-end-line="577" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../colors/venv/Lib/site-packages/discord/guild.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1478">
+          <caret line="1770" lean-forward="true" selection-start-line="1770" selection-end-line="1770" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/bucketbot.py" />
+    <entry file="file://$USER_HOME$/Downloads/bucketbot (1).py" />
+    <entry file="file://$PROJECT_DIR$/requirements2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+        <state relative-caret-position="1320">
+          <caret line="58" column="58" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="58" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-            <element signature="e#641#1415#0" />
-            <element signature="e#1463#1762#0" />
-            <element signature="e#1805#1886#0" />
-            <element signature="e#2061#5440#0" />
-            <element signature="e#5268#6151#0" />
-            <element signature="e#6245#6586#0" />
-            <element signature="e#6643#6764#0" />
-            <element signature="e#6824#6948#0" />
-            <element signature="e#7020#7450#0" />
-            <element signature="e#7572#8135#0" />
-            <element signature="e#8225#8469#0" />
-            <element signature="e#8568#9360#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/bucketbot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="163" column="54" selection-start-line="163" selection-start-column="47" selection-end-line="163" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
