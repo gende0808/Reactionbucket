@@ -61,10 +61,9 @@ async def help(ctx):
         f'\n\n-       This reaction role only works for a limited time! Fun for events. Lifespan has to '
         f'be assigned in seconds so for days/weeks/months that\'s a lot of seconds! '
         f'Can be removed with b.remove_reaction_role.```'
-        f'```bash'
-        f'\nReactionbucket has no paid features and the aim is to keep it that way. \n'
-        f'If you are enjoying the bot please consider supporting it at - \'https://www.patreon.com/Reactionbucket\''
-        f'\nWant to resolve an issue? Post it on \'https://www.reddit.com/r/Reactionbucket\'```'
+        f'```'
+        f'\nWARNING: Reactionbucket will no longer work after January 1st, 2021\n'
+        f'Thank you for the continued usage of the bot but due to financial struggles it will be shut down at the end of the year.```'
                        )
 
 
