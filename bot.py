@@ -13,7 +13,7 @@ connection = mysql.connector.connect(
     port=3306
 )
 # test token
-token = 'NTk4OTc5MDI2Mzc5NDcyOTA4.XSehHw.c-RNf1ijHyr-TyApLvDLiy0vHpI'
+token = 'NTk4O344576utgeryruiryeruyru5uyrtyurtutyutyurtyurteertetetertertertyHpI'
 # Creates client and sets command prefixes to ! meaning that any function name can be called with ! before it.
 client: commands.AutoShardedBot = commands.AutoShardedBot(command_prefix='b.', description='Reaction Role Manager')
 client.remove_command('help')
@@ -27,7 +27,7 @@ class TopGG(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU2NDQ4OTA5OTUxMjM4MTQ0MCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTc5OTY0OTQ5fQ.JmGhpnDA0Rch9tW5o5i-IRvBYUJG_JPIWu2Q7rooaYg' # set this to your DBL token
+        self.token = 'e4567uyitrewq4567865432567uiytreewtyutuyuterwerw457643567uy5465uy5JvdCI6dHJ1ZSwiaWF0IjoxNTc5OTY0OTQ5fQ.JmGhpnDA0Rch9tW5o5i-IRvBYUJG_JPIWu2Q7rooaYg' # set this to your DBL token
         self.dblpy = dbl.DBLClient(self.bot, self.token, autopost=True) # Autopost will post your guild count every 30 minutes
 
     async def on_guild_post(self):
